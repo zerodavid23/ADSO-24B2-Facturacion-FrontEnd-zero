@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Tab 2 </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card-content>
+    <form [formGroup]="form" (ngSubmit)="GuardarClientes()" novalidate>
+      <ion-list>
+        <ion-item>
+          <ion-label color="primary" floating
+            >documento del cliente:
+          </ion-label>
+          <ion-input formControlName="documento_identidad"></ion-input>
+        </ion-item>
+        <ion-item
+          *ngIf="form.get('documento_identidad').errors && form.get('documento_identidad').touched"
+        >
+          <p *ngIf="form.get('documento_identidad').hasError('required')">
+            es requerido
+          </p>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating>nombre del cliente: </ion-label>
+          <ion-input formControlName="nombre_completo"></ion-input>
+        </ion-item>
+        <ion-item
+          *ngIf="form.get('nombre_completo').errors && form.get('nombre_completo').touched"
+        >
+          <p *ngIf="form.get('nombre_completo').hasError('required')">
+            es requerido
+          </p>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating
+            >direccion de recidencia:
+          </ion-label>
+          <ion-input formControlName="direccion"></ion-input>
+        </ion-item>
+        <ion-item
+          *ngIf="form.get('direccion').errors && form.get('direccion').touched"
+        >
+          <p *ngIf="form.get('direccion').hasError('required')">es requerido</p>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating>numero de celular: </ion-label>
+          <ion-input formControlName="telefono"></ion-input>
+        </ion-item>
+        <ion-item
+          *ngIf="form.get('telefono').errors && form.get('telefono').touched"
+        >
+          <p *ngIf="form.get('telefono').hasError('required')">es requerido</p>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating>correo electronico: </ion-label>
+          <ion-input formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="form.get('email').errors && form.get('email').touched">
+          <p *ngIf="form.get('email').hasError('required')">es requerido</p>
+        </ion-item>
+      </ion-list>
+      <button ion-button block type="submit" [disabled]="form.invalid">
+        Guardar
+      </button>
+    </form>
+  </ion-card-content>
+</ion-content>
